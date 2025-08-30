@@ -3,8 +3,8 @@ import mongoose, { Connection } from "mongoose";
 
 const MONGODB_URI = process.env.MONGODB_URI as string;
 
-if (!MONGODB_URI) {
-  throw new Error("❌ MONGODB_URI n'est pas défini dans le fichier .env");
+if (!MONGODB_URI && process.env.NODE_ENV !== 'development') {
+  console.warn("⚠️ MONGODB_URI n'est pas défini dans le fichier .env");
 }
 
 // Définir une interface pour éviter `any`
@@ -24,6 +24,10 @@ declare global {
 global.mongooseCache = global.mongooseCache || { conn: null, promise: null };
 
 export async function connectToDatabase(): Promise<Connection> {
+  if (!MONGODB_URI) {
+    throw new Error("❌ MONGODB_URI n'est pas défini dans le fichier .env");
+  }
+
   if (global.mongooseCache!.conn) return global.mongooseCache!.conn;
 
   if (!global.mongooseCache!.promise) {

@@ -12,6 +12,9 @@
 
 # testing
 /coverage
+/__tests__/__coverage__
+/cypress/videos
+/cypress/screenshots
 
 # next.js
 /.next/
@@ -19,18 +22,23 @@
 
 # production
 /build
+/dist
 
 # misc
 .DS_Store
 *.pem
+.vscode/settings.json
+.idea/
 
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.nyc_output
 
 # env files (can opt-in for commiting if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -38,3 +46,42 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Database
+/data
+*.db
+*.sqlite
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Temporary files
+/tmp
+.tmp/
+*.tmp
+*.temp
+
+# Documentation builds (if using tools like GitBook)
+/_book
+/docs/_build
+
+# Backup files
+backup-*.json
+*.backup
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Package managers
+package-lock.json.bak
+yarn.lock.bak
